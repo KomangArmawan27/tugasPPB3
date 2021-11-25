@@ -1,137 +1,135 @@
-import React, { Component } from "react";
-import { View, Text, ScrollView } from 'react-native';
-import { Image } from 'react-native';
-import instagramLogo from './img/igLogo.png';
-import tombolTambah from './img/tambah.png';
-import aktivitas from './img/aktivitas.png';
-import dm from './img/dm.png';
-import home from './img/home.png';
-import search from './img/search.png';
-import video from './img/video.png';
-import shop from './img/shop.png';
-import account from './img/account.jpg';
+import React from "react";
+import { Text, View, Image, Button, Pressable } from 'react-native';
 import {style} from "./style";
+import tambah from './img/tambah.png';
+import profile from './img/account.jpg';
+import lock from './img/lock.png';
+import arrowDown from './img/arrowDown.png';
+import arrowUp from './img/arrowUp.png';
+import list from './img/list.png';
+import people from './img/discoverPeople.png';
+import newHighlight from './img/highlight.png';
+import hutao from './img/scam.png';
+import sara from './img/sara.png';
+import power from './img/power.jpg';
+import posts from './img/grid.png';
+import tagged from './img/tagged.png';
 
 const App = () => {
-  return (
-      <View style={style.container}> 
-        <BagianAtas />
-        <Text style={{borderBottomWidth:1, marginBottom:20}}></Text>
+  return(
+      <View style={style.container}>
+        {/* 1st view */}
+        <View style={style.line1}>
+          <Image source={lock} style={style.image1stLock}></Image>
+          <Text style={style.username}>Hayasaka</Text>
+          <Image source={arrowDown} style={style.image1stArrowDown}></Image>
+          <Text style={style.username}> </Text>
+          <Image source={tambah} style={style.image1stTambah}></Image>
+          <Image source={list} style={style.image1stList}></Image>
+        </View>
 
-        <BagianBawah />
+        {/* 2nd view */}
+        <View style={style.line2}>
+          <Image source={profile} style={style.image2nd}></Image>
+          <View style={style.cardWarp}>
+            <CardProfile angka='69'/>
+            <CardProfile keterangan='Posts'/>
+          </View>
+          <View style={style.cardWarp}>
+            <CardProfile angka='1k'/>
+            <CardProfile keterangan='Follower'/>
+          </View>
+          <View style={style.cardWarp}>
+            <CardProfile angka='100'/>
+            <CardProfile keterangan='Following'/>
+          </View>
+        </View>
+
+        {/* 3rd view */}
+        <View style={style.line3}>
+          <CardDescription deskripsi='Hayasaka Ai'/>
+          <CardDescription deskripsi='Maid'/>
+          <CardDescription deskripsi='Student'/>
+          <CardDescription deskripsi='Agent'/>
+          <CardDescription deskripsi='Agent'/>
+          <CardDescription deskripsi='Agent'/>
+        </View>
+
+        {/* 4th view */}
+        <View style={style.line4}>
+          <Pressable style={style.button}>
+            <Text style={style.deskripsi}>Edit Profile</Text>
+          </Pressable>
+          <Pressable style={style.people4th}>
+            <Image source={people} style={style.generalImage}></Image>
+          </Pressable>
+        </View>
+
+        {/* 5th view */}
+        <View style={style.line5}>
+          <View style={style.teks5Line}>
+            <CardDescription deskripsi='Story Highlights'/>
+            <Text>Keep your favorite stories on your profile</Text>
+          </View>
+          <Image style={style.image5thArrowUp} source={arrowUp}></Image>
+        </View>
+
+        {/* 6th view */}
+        <View style={style.line6}>
+          <CardStory story={newHighlight} />
+          <CardStory story={sara} />
+          <CardStory story={power} />
+          <CardStory story={hutao} />
+        </View>
+
+        {/* 7th view */}
+        <View style={style.line7}>
+          <View style={style.post}>
+            <Image source={posts} style={style.sevenThImage}></Image>
+          </View>
+          <View style={style.tagged}>
+            <Image source={tagged} style={style.sevenThImage}></Image>
+          </View>
+        </View>
+
+        {/* 8th view */}
+        <View style={style.line8}>
+          <CardPost post={power} />
+          <CardPost post={profile} />
+          <CardPost post={hutao} />
+        </View>
       </View>
-    
   )
 }
 
-// top component
-class BagianAtas extends Component {
-  render (){
-    return (
-      <View style={style.bagianAtas}>
-        <View  style={style.igLogo}>
-          <IgLogo />
-        </View>
-        <View  style={style.tambahPost}>
-          <TambahPost />
-        </View>
-        <View  style={style.aktivitas}>
-          <Aktivitas />
-        </View>
-        <View  style={style.aktivitas}>
-          <Dm />
-        </View>
-      </View>
-    )
-  }
-}
-
-// middle component
-// class BagianTengah extends Component {
-//   render(){
-//     return(
-//       <View style={style.bagianTengah}>
-//         <Story />
-//       </View>
-//     )
-//   }
-// }
-
-// bottom component
-class BagianBawah extends Component {
-  render (){
-    return (
-      <View style={style.bagianBawah}>
-        <View  style={style.home}>
-          <Home />
-        </View>
-        <View  style={style.search}>
-          <Seacrh />
-        </View>
-        <View  style={style.video}>
-          <Video />
-        </View>
-        <View  style={style.shop}>
-          <Shop />
-        </View>
-        <View  style={style.account}>
-          <Account />
-        </View>
-      </View>
-    )
-  }
-}
-
-// all const
-const IgLogo = () => {
+// card
+const CardProfile = (props) => {
   return (
-    <Image source={instagramLogo} style={style.image}></Image>
+    <View>
+      <Text style={style.angka2nd}>{props.angka}</Text>
+      <Text style={style.tulisan2nd}>{props.keterangan}</Text>
+    </View>
   )
 }
-const TambahPost = () => {
+const CardDescription = (props) => {
   return (
-    <Image source={tombolTambah} style={style.image}></Image>
+    <View>
+      <Text style={style.deskripsi}>{props.deskripsi}</Text>
+    </View>
   )
 }
-const Aktivitas = () => {
+const CardStory = (props) => {
   return (
-    <Image source={aktivitas} style={style.image}></Image>
+    <View>
+      <Image source={props.story} style={style.cardStory}></Image>
+    </View>
   )
 }
-const Dm = () => {
+const CardPost = (props) => {
   return (
-    <Image source={dm} style={style.image}></Image>
-  )
-}
-
-const Home = () => {
-  return (
-    <Image source={home} style={style.image}></Image>
-  )
-}
-const Seacrh = () => {
-  return (
-    <Image source={search} style={style.image}></Image>
-  )
-}
-const Video = () => {
-  return (
-    <Image source={video} style={style.image}></Image>
-  )
-}
-const Shop = () => {
-  return (
-    <Image source={shop} style={style.image}></Image>
-  )
-}
-const Story = () => {
-  return (
-    <Image source={account} style={style.image}></Image>
-  )
-}
-const Account = () => {
-  return (
-    <Image source={account} style={style.imageAccount}></Image>
+    <View>
+      <Image source={props.post} style={style.cardPost}></Image>
+    </View>
   )
 }
 
